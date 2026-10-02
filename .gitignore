@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+Icon?
+
+# Python
+__pycache__/
+*.py[cod]
+
+# VS Code temporary files
+tempCodeRunnerFile*
+.vscode/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Local database
+*.db
+
+# Environment files
+.env
+.venv/
+venv/
+
+# Raw datasets
+data/*.csv
