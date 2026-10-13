@@ -77,13 +77,13 @@ def clean_stringified_list(df, col):
     df = df.copy()
     df[col] = (
         df[col]
-        .fillna("")
         .astype(str)
         .str.strip("[]")
         .str.replace("'", "")
+        .str.strip()
+        .replace("", pd.NA)
         .str.split(", ")
     )
-
     return df
 
 def clean_comma_separated(df, col):
@@ -93,9 +93,9 @@ def clean_comma_separated(df, col):
     df = df.copy()
     df[col] = (
         df[col]
-        .fillna("")
         .astype(str)
+        .str.strip()
+        .replace(["", "nan"], pd.NA)
         .str.split(", ")
     )
-
     return df

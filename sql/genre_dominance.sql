@@ -10,7 +10,7 @@ WITH avg_popularity AS(
         artist_genres
 ),
 
--- market share
+-- market share (weighted_tracks/total_weighted_tracks)
 genre_counts AS(
     SELECT
         release_year,
@@ -41,7 +41,7 @@ genre_market_share AS(
         ON g.release_year = y.release_year
 )
 
--- all metrics & genre rank
+-- combining all calculated metrics + genre rank
 SELECT
     g.artist_genres,
     g.release_year,
