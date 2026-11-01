@@ -6,11 +6,11 @@ Music trends are constantly changing, but a genre's market presence does not alw
 
 This project analyzes the Spotify Global Music Dataset to explore how genre presence, track performance, and artist strategy have changed over time. Using Python and SQL, I examine both long-term and recent patterns to better understand:
 
-- Which genres hold the strongest market presence
-- How genre relevance changes over time
-- Which genres are emerging, stable, or declining
-- Whether artist specialization or diversification relates to performance
-- How recent market behavior compares with historical patterns
+- Which genres hold the strongest market presence?
+- How genre relevance changes over time?
+- Which genres are emerging, stable, or declining?
+- Whether artist specialization or diversification relates to performance?
+- How recent market behavior compares with historical patterns?
 
 The goal is to turn track-level Spotify data into broader insights about **music market behavior and the factors associated with successful tracks and artists**.
 
@@ -22,11 +22,11 @@ This project uses the [Spotify Global Music Dataset](https://www.kaggle.com/data
 
 The dataset contains track-level Spotify metadata including:
 
-- Track and artist information
-- Artist genre assignments
-- Track popularity
-- Album and release information
-- Track duration
+- Track and artist information.
+- Artist genre assignments.
+- Track popularity.
+- Album and release information.
+- Track duration.
 
 Two datasets are used: a historical dataset containing tracks through 2025 and a separate 2025 dataset used for later comparison and validation.
 
@@ -58,12 +58,12 @@ Yearly genre metrics are then created using SQL and Python.
 
 ### Key Metrics
 
-- **Weighted Tracks** — Track volume adjusted for multi-genre tracks
-- **Market Share** — A genre's share of total weighted tracks within each year
-- **Genre Rank** — Yearly ranking based on market share
-- **Hit Share** — A genre's share of weighted hit tracks, where hits are defined using the top 25% of track popularity
-- **Average / Median Popularity** — Measures overall and typical track performance
-- **Popularity Standard Deviation** — Measures how consistently tracks within a genre perform
+- **Weighted Tracks** — Track volume adjusted for multi-genre tracks.
+- **Market Share** — A genre's share of total weighted tracks within each year.
+- **Genre Rank** — Yearly ranking based on market share.
+- **Hit Share** — A genre's share of weighted hit tracks, where hits are defined using the top 25% of track popularity.
+- **Average / Median Popularity** — Measures overall and typical track performance.
+- **Popularity Standard Deviation** — Measures how consistently tracks within a genre perform.
 
 Sparse years are filtered before analysis to reduce the influence of years with insufficient track representation.
 
@@ -76,8 +76,8 @@ Genre performance is evaluated across two non-overlapping periods:
 
 The analysis compares:
 
-1. **Overall market change** — How genre presence and track performance have shifted between the two periods
-2. **Market leader change** — How the genres reaching the top three in yearly market share have changed over time
+1. **Overall market change** — How genre presence and track performance have shifted between the two periods.
+2. **Market leader change** — How the genres reaching the top three in yearly market share have changed over time.
 
 This analysis separates **market presence** from **track performance**. A genre can lose market share while maintaining or improving its popularity and hit performance.
 
@@ -86,27 +86,34 @@ This analysis separates **market presence** from **track performance**. A genre 
 ### Part II — Genre Lifecycle
 
 **Business Question:**  
-Which genres are growing, stable, or declining, and how sustainable is their relevance over time?
+Which genres are emerging, stable, or declining based on recent market share trends, and how do their popularity and hit performance compare?
 
-Yearly metrics from Part I are used to measure longer-term genre trajectories.
+Building on the yearly metrics from Part I, this section evaluates genre performance between 2021 and 2025 to identify longer-term changes in genre representation and popularity, with year to year metrics to explain yearly flucuations.
 
 ### Trend Metrics
 
-- **Popularity Growth** — Change in average track popularity over time
-- **Market Growth** — Change in market share over time
-- **Hit Growth** — Change in hit share over time
-- **Trend Slope** — Overall direction of genre performance
-- **Volatility** — How consistently a genre performs over time
+- **Market Share Change** — Year to year and net changes in a genre's market share.
+- **Hit Share Change** — Year to year and net changes in a genre's share of popular tracks.
+- **Average Popularity Change** — Changes in average track popularity over time.
+- **Genre Rank Change** — Changes in a genre's relative market share ranking.
+- **Average Yearly Change** — Net change divided by the number of years between the first and last observed records.
 
-Rolling periods are used to reduce the influence of short-term yearly fluctuations.
+Year to year changes are calculated for consecutive years, while longer-term changes are measured by comparing each genre's first and last observed years within the analysis period.
 
-Genres with sufficient historical observations are classified into lifecycle stages:
+Genre Eligibility & Classification:
+To ensure sufficient data coverage, genres have to meet two criterias:
+- **Year Coverage**: At least 3 distinct observed years between 2021 and 2025.
+- **Weighted Track Volume**: At least 4 total weighted tracks across the analysis period.
+These criteria resulted in 43 eligible genres for lifecycle classification.
 
-- **Emerging** — Overall positive trajectory with increasing market and/or hit presence
-- **Stable** — Relatively consistent performance with low trend movement
-- **Declining** — Overall negative trajectory with decreasing market and/or hit presence
+Genres are classified using the 25th and 75th percentile thresholds of average yearly market share change:
+- **Emerging** — Positive market share change at or above the 75th percentile.
+- **Stable** — Market share change between the classification thresholds.
+- **Declining** — Negative market share change at or below the 25th percentile.
 
-Statistical thresholds will be used to create data-driven classification cutoffs rather than relying on manually selected values.
+Classifications represent relative market share performance. The Stable category does not necessarily indicate unchanged or consistent performance over time.
+
+*Hit share, average popularity, and genre rank are retained as supporting metrics for further analysis of lifecycle patterns.*
 
 ---
 
