@@ -80,6 +80,7 @@ def clean_stringified_list(df, col):
         .astype(str)
         .str.strip("[]")
         .str.replace("'", "")
+        .str.replace('"', '')
         .str.strip()
         .replace("", pd.NA)
         .str.split(", ")
