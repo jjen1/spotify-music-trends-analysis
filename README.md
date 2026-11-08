@@ -50,11 +50,13 @@ Several data-quality issues required additional preparation before analysis:
 ### Part I — Genre Market Overview
 
 **Business Question:**  
-How has genre presence and performance changed between the historical (2000–2020) and recent (2021–2025) music markets?
+How have genre representation and track performance changed between the historical (2000–2020) and recent (2021–2025) periods?
 
-Tracks with multiple genres are assigned proportional genre weights to prevent overcounting. For example, a track associated with two genres contributes 0.5 to each rather than being counted twice.
+This analysis examines genre representation and popularity trends across release years to identify shifts in genre dominance and performance.
 
-Yearly genre metrics are then created using SQL and Python.
+To prevent overcounting, tracks associated with multiple genres are assigned proportional weights. For example, a track associated with two genres contributes 0.5 to each genre rather than being counted twice.
+
+Yearly genre metrics are calculated using SQL and Python to evaluate market presence and performance.
 
 ### Key Metrics
 
@@ -184,8 +186,6 @@ Recommendations will be added after the lifecycle, artist strategy, and validati
 **Python Libraries**
 - pandas
 - NumPy
-- Matplotlib
-- Seaborn
 
 **Database**
 - SQLite
@@ -206,7 +206,7 @@ Recommendations will be added after the lifecycle, artist strategy, and validati
 - [x] Genre weighting methodology
 - [x] Genre market share and performance metrics
 - [x] Historical vs. recent genre analysis
-- [ ] Genre lifecycle classification
+- [x] Genre lifecycle classification
 - [ ] Artist diversification analysis
 - [ ] Recent trend validation
-- [ ] Final visualizations and strategic recommendations
+- [ ] Strategic recommendations
